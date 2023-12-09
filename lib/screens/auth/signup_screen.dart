@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:pgrkam/screens/auth/signup_screen.dart';
+import 'package:pgrkam/screens/auth/login_screen..dart';
 import 'package:pgrkam/widgets/round_button.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
@@ -25,8 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text("Login Page"),
+        // automaticallyImplyLeading: false,
+        title: const Text("Signup Page"),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -34,8 +34,8 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text('Login to enter the Homepage'),
-            SizedBox(
+            const Text(''),
+            const SizedBox(
               height: 200,
             ),
             Form(
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 30,
             ),
             RoundButton(
-              title: 'Login',
+              title: 'Signup',
               onTap: () {
                 if (_formKey.currentState!.validate()) {}
               },
@@ -85,15 +85,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Row(
               children: [
-                const Text("don't have an account?"),
+                const Text("Already have an account?"),
                 TextButton(
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SignupScreen()));
+                              builder: (context) => const LoginScreen()));
                     },
-                    child: const Text('Sign up'))
+                    child: const Text('Log in'))
               ],
             )
           ],
