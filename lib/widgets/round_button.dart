@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 class RoundButton extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
+  final bool loading;
 
-  const RoundButton({Key? key, required this.title, required this.onTap})
+  const RoundButton(
+      {Key? key,
+      required this.title,
+      required this.onTap,
+      this.loading = false})
       : super(key: key);
 
   @override
@@ -12,10 +17,23 @@ class RoundButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
+        width: 500,
+        height: 35,
         decoration: BoxDecoration(
-            color: Colors.amber, borderRadius: BorderRadius.circular(10)),
+          color: Colors.amber,
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: Center(
-          child: Text(title),
+          child: loading
+              ? const CircularProgressIndicator()
+              : Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  ),
+                ),
         ),
       ),
     );

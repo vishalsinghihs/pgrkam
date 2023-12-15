@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pgrkam/screens/auth/login_screen..dart';
+import 'package:pgrkam/utils/utils.dart';
 import 'package:pgrkam/widgets/round_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -9,11 +11,14 @@ class SignupScreen extends StatefulWidget {
   State<SignupScreen> createState() => _SignupScreenState();
 }
 
+bool loadaing = false;
+
 class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
 
+  FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void dispose() {
     super.dispose();
@@ -77,7 +82,22 @@ class _SignupScreenState extends State<SignupScreen> {
             RoundButton(
               title: 'Signup',
               onTap: () {
-                if (_formKey.currentState!.validate()) {}
+                if (_formKey.currentState!.validate()) {
+                  setState(() {
+                    loadaing = true;
+                  });
+                  _auth
+                      .createUserWithEmailAndPassword(
+                          email: emailcontroller.text.toString(),
+                          password: passwordcontroller.text.toString())
+                      .then((value) {})
+                      .onError((error, stackTrace) {
+                    utils().toastMessage(error.toString());
+                    setState(() {
+                      loadaing = false;
+                    });
+                  });
+                }
               },
             ),
             const SizedBox(
