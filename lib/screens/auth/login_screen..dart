@@ -55,83 +55,95 @@ class _LoginScreenState extends State<LoginScreen> {
         automaticallyImplyLeading: false,
         title: const Text(""),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              'Login to enter',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                'Login to enter',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 150,
-            ),
-            Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: emailcontroller,
-                      decoration: const InputDecoration(
-                          hintText: 'Email',
-                          helperText: 'enter email e.g- abc@gmail.com'),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Enter your email';
-                        }
-                        return null;
+              const SizedBox(
+                height: 20,
+              ),
+              // Add your image here
+              Image.asset(
+                'assets/images/your_image.png',
+                height: 150, // Adjust the height as needed
+                width: 150, // Adjust the width as needed
+                fit: BoxFit.contain,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: emailcontroller,
+                        decoration: const InputDecoration(
+                            hintText: 'Email',
+                            helperText: 'Enter Email e.g- abc@gmail.com'),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Enter your email';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        keyboardType: TextInputType.text,
+                        controller: passwordcontroller,
+                        decoration: const InputDecoration(
+                            hintText: 'Password', helperText: ''),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Enter your email';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  )),
+              const SizedBox(
+                height: 30,
+              ),
+              RoundButton(
+                title: 'Login',
+                onTap: () {
+                  if (_formKey.currentState!.validate()) {
+                    login();
+                  }
+                },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                children: [
+                  const Text("don't have an account?"),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignupScreen()));
                       },
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                      keyboardType: TextInputType.text,
-                      controller: passwordcontroller,
-                      decoration: const InputDecoration(
-                          hintText: 'Password', helperText: ''),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Enter your email';
-                        }
-                        return null;
-                      },
-                    ),
-                  ],
-                )),
-            const SizedBox(
-              height: 30,
-            ),
-            RoundButton(
-              title: 'Login',
-              onTap: () {
-                if (_formKey.currentState!.validate()) {
-                  login();
-                }
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Row(
-              children: [
-                const Text("don't have an account?"),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignupScreen()));
-                    },
-                    child: const Text('Sign up'))
-              ],
-            )
-          ],
+                      child: const Text('Sign up'))
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
