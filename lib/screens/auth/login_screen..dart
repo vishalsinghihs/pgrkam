@@ -13,6 +13,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool loading = false;
   final _formKey = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
@@ -26,6 +27,9 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void login() {
+    setState(() {
+      loading = true;
+    });
     _auth
         .signInWithEmailAndPassword(
             email: emailcontroller.text,
@@ -34,11 +38,18 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => const HomePage(),
         ),
       );
+      setState(() {
+        loading = true;
+      });
     }).onError((error, stackTrace) {
+      debugPrint(error.toString());
       utils().toastMessage(error.toString());
+      setState(() {
+        loading = true;
+      });
     });
 
     @override
@@ -120,6 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               RoundButton(
                 title: 'Login',
+                loading: loading,
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
                     login();

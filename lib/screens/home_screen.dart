@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pgrkam/screens/camera_view.dart';
+import 'package:pgrkam/screens/job_location.dart';
+import 'package:pgrkam/screens/notification.dart';
+import 'package:pgrkam/screens/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,15 +24,25 @@ class _HomePageState extends State<HomePage> {
               child: Stack(
                 children: [
                   Positioned(
-                    top: 10,
+                    top: 30,
                     right: 20,
-                    child: Icon(
-                      Icons.notifications,
-                      color: Color.fromARGB(255, 251, 251, 250),
-                      size: 75,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Navigate to the NotificationPage
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NotificationPage()),
+                        );
+                      },
+                      child: const Icon(
+                        Icons.notifications,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        size: 75,
+                      ),
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     top: 100,
                     left: 10,
                     child: Text(
@@ -41,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Positioned(
-                    top: 120,
+                    top: 130,
                     right: 33,
                     child: Image.asset(
                       'assets/images/imagelogo.png',
@@ -63,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: SizedBox(
@@ -77,57 +91,47 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                "Services",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
+            const SizedBox(height: 10),
+            InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => JobFinderScreen()));
+              },
+              child: Container(
+                width: 350,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: Colors.amberAccent,
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(
+                        Icons.location_on,
+                        size: 60,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        "Find jobs nearest to\nyour location",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            Container(
-              height: 100,
-              color: Colors.amberAccent,
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Icon(
-                      Icons.account_circle,
-                      size: 60,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Icon(
-                      Icons.add_home_work_rounded,
-                      size: 60,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Icon(
-                      Icons.architecture_outlined,
-                      size: 60,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Icon(
-                      Icons.arrow_upward,
-                      size: 60,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: Text(
                 "Oppurtunity",
                 textAlign: TextAlign.left,
@@ -137,18 +141,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            // Container(
-            //   height: 100,
-            //   decoration: BoxDecoration(
-            //     gradient: LinearGradient(
-            //       begin: Alignment.topCenter,
-            //       end: Alignment.bottomCenter,
-            //       colors: [
-            //         Color.fromARGB(255, 238, 102, 23),
-            //         Color.fromARGB(255, 216, 187, 69),
-            //       ],
-            //     ),
-            //   ),
 
             // ),
             Container(
@@ -156,7 +148,7 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.circular(10), // Adjust the radius as needed
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
@@ -171,18 +163,16 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     width: 80,
                     height: 80,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.rectangle,
                       image: DecorationImage(
-                        image: AssetImage(
-                            'assets/images/job1.png'), // Replace with the actual path
+                        image: AssetImage('assets/images/job1.png'),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  SizedBox(width: 10), // Adjust spacing between image and text
-                  // Text in the rest of the space
-                  Expanded(
+                  const SizedBox(width: 10),
+                  const Expanded(
                     child: Text(
                       'Join Samsung, where innovation thrives. Shape the future with cutting-edge technology and endless opportunities',
                       style: TextStyle(
@@ -196,13 +186,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
               height: 100,
               decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.circular(10), // Adjust the radius as needed
-                gradient: LinearGradient(
+                borderRadius: BorderRadius.circular(10),
+                gradient: const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
@@ -213,11 +202,10 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Row(
                 children: [
-                  // Small image on the left side
                   Container(
                     width: 80,
                     height: 80,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.rectangle,
                       image: DecorationImage(
                         image: AssetImage(
@@ -226,9 +214,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10), // Adjust spacing between image and text
-                  // Text in the rest of the space
-                  Expanded(
+                  const SizedBox(width: 10),
+                  const Expanded(
                     child: Text(
                       'Unlock your potential at Microsoft. Explore groundbreaking projects, collaborate with brilliant minds, and drive global impact',
                       style: TextStyle(
@@ -242,13 +229,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
               height: 100,
               decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.circular(10), // Adjust the radius as needed
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
@@ -263,7 +250,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     width: 80,
                     height: 80,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.rectangle,
                       image: DecorationImage(
                         image: AssetImage(
@@ -272,9 +259,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10), // Adjust spacing between image and text
-                  // Text in the rest of the space
-                  Expanded(
+                  const SizedBox(width: 10),
+                  const Expanded(
                     child: Text(
                       'Embark on a journey with Google. Innovate, collaborate, and shape the future of technology together.',
                       style: TextStyle(
@@ -293,26 +279,51 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/images/icon1.png',
-              width: 80,
-              height: 80,
+            icon: GestureDetector(
+              onTap: () {
+                // Action for Home icon
+                print('Home icon pressed');
+              },
+              child: Image.asset(
+                'assets/images/icon1.png',
+                width: 88,
+                height: 88,
+              ),
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/images/icon2.png',
-              width: 60,
-              height: 60,
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CameraView(),
+                    ));
+              },
+              child: Image.asset(
+                'assets/images/icon2.png',
+                width: 60,
+                height: 60,
+              ),
             ),
             label: 'Scanner',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/images/icon3.png',
-              width: 50,
-              height: 50,
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileScreen(),
+                  ),
+                );
+              },
+              child: Image.asset(
+                'assets/images/icon3.png',
+                width: 50,
+                height: 50,
+              ),
             ),
             label: 'Profile',
           ),
