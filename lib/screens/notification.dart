@@ -10,18 +10,20 @@ class NotificationPage extends StatelessWidget {
       body: ListView(
         children: [
           NotificationItem(
-            title: 'New Notification 1',
-            description: 'This is the first notification description.',
+            title: 'New Notification ',
+            description:
+                'Join Samsung, where innovation thrives. Shape the future with cutting-edge technology and endless opportunities.',
           ),
           NotificationItem(
-            title: 'New Notification 2',
-            description: 'This is the second notification description.',
+            title: 'New Notification ',
+            description:
+                'Unlock your potential at Microsoft. Explore groundbreaking projects, collaborate with brilliant minds, and drive global impact.',
           ),
           NotificationItem(
-            title: 'New Notification 3',
-            description: 'This is the third notification description.',
+            title: 'New Notification  ',
+            description:
+                'Embark on a journey with Google. Innovate, collaborate, and shape the future of technology together.',
           ),
-          // Add more NotificationItem widgets for additional notifications
         ],
       ),
     );

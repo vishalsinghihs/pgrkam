@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:pgrkam/screens/auth/signup_screen.dart';
 import 'package:pgrkam/screens/home_screen.dart';
-import 'package:pgrkam/screens/login_as_employ_employer.dart';
 import 'package:pgrkam/utils/utils.dart';
 import 'package:pgrkam/widgets/round_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class EmployerLoginScreen extends StatefulWidget {
+  const EmployerLoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<EmployerLoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<EmployerLoginScreen> {
   bool loading = false;
   final _formKey = GlobalKey<FormState>();
   final emailcontroller = TextEditingController();
@@ -75,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
-                'Login to enter',
+                'Welcome Employer',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -86,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               // Add your image here
               Image.asset(
-                'assets/images/your_image.png',
+                'assets/images/employer_image.png',
                 height: 150, // Adjust the height as needed
                 width: 150, // Adjust the width as needed
                 fit: BoxFit.contain,
@@ -155,20 +154,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: const Text('Sign up'))
                 ],
               ),
-              Row(
-                children: [
-                  const Text("Or login as an  Employer"),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const EmployerLoginScreen()));
-                      },
-                      child: const Text('Login'))
-                ],
-              )
             ],
           ),
         ),

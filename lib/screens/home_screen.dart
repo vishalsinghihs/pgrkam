@@ -128,7 +128,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
             const SizedBox(height: 20),
             const Padding(
               padding: EdgeInsets.all(10.0),
@@ -141,8 +140,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
-            // ),
             Container(
               height: 100,
               decoration: BoxDecoration(
@@ -185,7 +182,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-
             const SizedBox(height: 20),
             Container(
               height: 100,
@@ -228,7 +224,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-
             const SizedBox(height: 20),
             Container(
               height: 100,
