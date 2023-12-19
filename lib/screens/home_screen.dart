@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pgrkam/screens/camera_view.dart';
-import 'package:pgrkam/screens/job_location.dart';
+// import 'package:pgrkam/screens/job_location.dart';
+import 'package:pgrkam/screens/location_homepage.dart';
 import 'package:pgrkam/screens/notification.dart';
 import 'package:pgrkam/screens/profile_screen.dart';
 
@@ -94,8 +95,10 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 10),
             InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => JobFinderScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const location_HomeScreen()));
               },
               child: Container(
                 width: 350,

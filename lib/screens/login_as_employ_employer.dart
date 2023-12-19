@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pgrkam/screens/auth/signup_screen.dart';
+import 'package:pgrkam/screens/employer_screen.dart';
 import 'package:pgrkam/screens/home_screen.dart';
 import 'package:pgrkam/utils/utils.dart';
 import 'package:pgrkam/widgets/round_button.dart';
@@ -38,7 +39,7 @@ class _LoginScreenState extends State<EmployerLoginScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const HomePage(),
+          builder: (context) => JobPostingPage(),
         ),
       );
       setState(() {
@@ -83,7 +84,6 @@ class _LoginScreenState extends State<EmployerLoginScreen> {
               const SizedBox(
                 height: 20,
               ),
-              // Add your image here
               Image.asset(
                 'assets/images/employer_image.png',
                 height: 150, // Adjust the height as needed
@@ -149,7 +149,7 @@ class _LoginScreenState extends State<EmployerLoginScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SignupScreen()));
+                                builder: (context) => JobPostingPage()));
                       },
                       child: const Text('Sign up'))
                 ],
