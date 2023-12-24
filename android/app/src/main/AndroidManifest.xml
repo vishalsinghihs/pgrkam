@@ -33,6 +33,9 @@ package="com.example.push_notification">
         <meta-data
             android:name="flutterEmbedding"
             android:value="2"/>
-            
+         
+    <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyBxU1bsVhp8CcSXPZdprjn65GI8RAJL6Rc"/>
+
     </application>
 </manifest>

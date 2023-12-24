@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pgrkam/screens/auth/signup_screen.dart';
+import 'package:pgrkam/screens/home_page.dart';
 import 'package:pgrkam/screens/home_screen.dart';
 import 'package:pgrkam/utils/utils.dart';
 import 'package:pgrkam/widgets/round_button.dart';
